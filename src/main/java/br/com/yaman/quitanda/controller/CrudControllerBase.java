@@ -12,15 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import br.com.yaman.quitanda.business.GenericCrudBusiness;
 import br.com.yaman.quitanda.wrapper.WrapperJsonObject;
 
 
 public abstract class CrudControllerBase<T> {
-	private static final Logger LOGGER = LoggerFactory.getLogger(CrudControllerBase.class);
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(CrudControllerBase.class.getName());
     public static final String JSON = "application/json";
     
     public abstract GenericCrudBusiness<T> getBusinessClass();
@@ -28,6 +26,8 @@ public abstract class CrudControllerBase<T> {
     @RequestMapping(value = "/find-all", method = RequestMethod.GET)
     public List<T> pageLoad() {
     	try {
+    		
+    		
     		return getBusinessClass().findAll();
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage(),e);
@@ -37,8 +37,8 @@ public abstract class CrudControllerBase<T> {
     }
   
     @RequestMapping(value = "save", method = RequestMethod.POST)
-    public T save(@RequestBody WrapperJsonObject<T> t) {
-        return getBusinessClass().save(t.getT());
+    public void save(@RequestBody WrapperJsonObject<T> t) {
+         getBusinessClass().save(t.getT());
     }
 
     @RequestMapping(value = "/find-one", method = RequestMethod.GET)
@@ -57,9 +57,9 @@ public abstract class CrudControllerBase<T> {
         return tType;
     }
     
-    private Gson getNewGson() {
-		return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-				.create();
-	}
+//    private Gson getNewGson() {
+//		return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+//				.create();
+//	}
     
 }

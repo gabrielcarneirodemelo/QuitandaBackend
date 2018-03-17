@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface GenericCrudBusiness<T> {	
-	public abstract List<T> findAll() ;
-	public abstract T save(T t) ;
-	public abstract T findOne(Integer id) ;
-	public abstract void delete(T t);
+	public  List<T> findAll() ;
+	public  void save(T t) ;
+	public  T findOne(Integer id) ;
+	public  void delete(T t);
 }

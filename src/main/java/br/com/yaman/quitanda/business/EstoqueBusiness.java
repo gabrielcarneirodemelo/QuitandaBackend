@@ -5,32 +5,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.yaman.quitanda.dao.entity.Produto;
-import br.com.yaman.quitanda.service.ProdutoServiceImpl;
+import br.com.yaman.quitanda.dao.entity.Estoque;
+import br.com.yaman.quitanda.service.EstoqueServiceImpl;
 
 @Component
-public class ProdutoBusiness implements GenericCrudBusiness<Produto> {
+public class EstoqueBusiness implements GenericCrudBusiness<Estoque> {
 
 	@Autowired
-	private ProdutoServiceImpl service;
+	private EstoqueServiceImpl service;
 
 	@Override
-	public List<Produto> findAll() {
+	public List<Estoque> findAll() {
 		return service.findAll();
 	}
 
 	@Override
-	public void save(Produto t) {
+	public void save(Estoque t) {
 		service.save(t);
 	}
 
 	@Override
-	public Produto findOne(Integer id) {
+	public Estoque findOne(Integer id) {
 		return service.findOne(id);
 	}
 
 	@Override
-	public void delete(Produto t) {
+	public void delete(Estoque t) {
 		service.delete(t);
 	}
 

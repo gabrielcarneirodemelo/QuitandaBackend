@@ -9,7 +9,7 @@ import br.com.yaman.quitanda.dao.entity.Produto;
 import br.com.yaman.quitanda.repository.ProdutoRepository;
 
 @Service
-public class ProdutoServiceImpl implements ProdutoService {
+public class ProdutoServiceImpl implements GenericCrudService<Produto> {
 
 	@Autowired
     private ProdutoRepository repository;
@@ -20,8 +20,8 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public Produto save(Produto t) {
-		return repository.save(t);
+	public void save (Produto t) {
+		repository.save(t);
 	}
 
 	@Override
@@ -30,8 +30,12 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public void delete(Produto t) {
-		repository.delete(t);
+	public void delete (Produto t) {
+		 repository.delete(t);
 	}
+
+	
+
+	
 
 }

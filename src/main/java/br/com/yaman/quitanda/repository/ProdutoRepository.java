@@ -15,4 +15,5 @@ import br.com.yaman.quitanda.dao.entity.Produto;
 @Transactional
 public interface ProdutoRepository extends JpaCustomRepository<Produto> {
 	
+	
 }
